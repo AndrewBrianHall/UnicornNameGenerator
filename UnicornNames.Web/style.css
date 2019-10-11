@@ -109,10 +109,8 @@
     cursor: pointer;
     border-radius: 4px;
     margin-top: 10px;
-}
-
-.button-content {
-    text-align: center;
+    box-shadow: none;
+    border: 0;
 }
 
 body {
