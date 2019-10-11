@@ -30,7 +30,7 @@ var nameTable = {
 var birthdayTable = {
     "jan": "Crystal-Dazzler",
     "feb": "Twinkle-Sweet",
-    "mar": "Giltter-Blossom",
+    "mar": "Glitter-Blossom",
     "apr": "Nimble-Flower",
     "may": "Snowflake-Dream",
     "jun": "Cloud-Jumper",
@@ -47,6 +47,7 @@ var monthField = "selMonth";
 var outputField = "lblUnicornName";
 var collapseClass = "collapse";
 var progressElement = "pgrIndicator";
+var placeholderClass = "text-placeholder";
 var delay = 400;
 
 function getUnicornName() {
@@ -79,8 +80,13 @@ function inProgress() {
 function completed() {
     var nameEl = document.getElementById(outputField);
     var progressEl = document.getElementById(progressElement)
+
     nameEl.classList.remove(collapseClass);
+    nameEl.classList.remove(placeholderClass)
     progressEl.classList.add(collapseClass);
+
+    document.getElementById(nameField).value = '';
+    document.getElementById(monthField).value = '';
 }
 
 function setUnicornName(name, month) {

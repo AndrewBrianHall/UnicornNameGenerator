@@ -45,6 +45,11 @@
     margin-top: 3px;
 }
 
+.text-placeholder {
+    font-weight: normal;
+    color: rgb(50, 50, 50);
+}
+
 .collapse {
     visibility: collapse;
     width: 0px;
