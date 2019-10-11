@@ -10,6 +10,12 @@
     vertical-align: top;
 }
 
+.col-med-lg {
+    display: inline-block;
+    width: 325px;
+    vertical-align: top;
+}
+
 .col-large {
     display: inline-block;
     width: 480px;
