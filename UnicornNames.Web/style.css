@@ -125,3 +125,7 @@ body {
 select {
     padding: 1px;
 }
+
+input {
+    padding: 2px;
+}
