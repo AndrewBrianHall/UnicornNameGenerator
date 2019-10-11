@@ -1,0 +1,54 @@
+﻿<Window x:Class="UnicornNameGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=System.Runtime"
+        xmlns:local="clr-namespace:UnicornNameGenerator"
+        mc:Ignorable="d"
+        Title="Unicorn Name Finder" Height="200" Width="625">
+    <Window.Resources>
+        <Thickness x:Key="ContentPadding">10,5,5,5</Thickness>
+        <sys:Double x:Key="FontSize">14</sys:Double>
+        <Style TargetType="Window">
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="Padding" Value="{StaticResource ContentPadding}"></Setter>
+            <Setter Property="FontSize" Value="{StaticResource FontSize}"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="{StaticResource ContentPadding}"></Setter>
+            <Setter Property="FontSize" Value="{StaticResource FontSize}"></Setter>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="HorizontalAlignment" Value="Left"></Setter>
+            <Setter Property="Width" Value="125"></Setter>
+            <Setter Property="Height" Value="25"></Setter>
+            <Setter Property="Margin" Value="10"></Setter>
+            <Setter Property="FontSize" Value="{StaticResource FontSize}"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="15"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.ColumnSpan="2">Your Information</Label>
+        <Label Grid.Row="1">Name</Label>
+        <TextBox x:Name="txtName" Grid.Row="1"  Grid.Column="1"></TextBox>
+        <Label Grid.Row="2">Birthday</Label>
+        <TextBox x:Name="txtBirthday" Grid.Row="2" Grid.Column="1"></TextBox>
+        <Button Grid.Row="3" Click="Submit_Click" Grid.ColumnSpan="2">Get Name</Button>
+        <Label Grid.Column="4">Your Unicorn Name</Label>
+        <Label x:Name="lblResult" x:Uid="unicornName" FontWeight="DemiBold" Grid.Row="1" Grid.Column="4">[Your Unicorn Name]</Label>
+    </Grid>
+</Window>
