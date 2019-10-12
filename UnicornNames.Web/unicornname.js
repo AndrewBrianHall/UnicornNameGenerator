@@ -48,7 +48,7 @@ var outputField = "lblUnicornName";
 var collapseClass = "collapse";
 var progressElement = "pgrIndicator";
 var placeholderClass = "text-placeholder";
-var delay = 400;
+var delay = 350;
 
 function getUnicornName() {
     var name = document.getElementById(nameField).value;
