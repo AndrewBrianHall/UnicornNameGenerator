@@ -48,7 +48,7 @@ var outputField = "lblUnicornName";
 var collapseClass = "collapse";
 var progressElement = "pgrIndicator";
 var placeholderClass = "text-placeholder";
-var delay = 350;
+var delay = 400;
 
 function getUnicornName() {
     var name = document.getElementById(nameField).value;
@@ -63,9 +63,10 @@ function getUnicornName() {
     }
 
     inProgress();
+    setUnicornName(name, month);
 
     setTimeout(() => {
-        setUnicornName(name, month);
+        completed();
     }, delay);
 
 }
@@ -75,6 +76,7 @@ function inProgress() {
     var progressEl = document.getElementById(progressElement)
     nameEl.classList.add(collapseClass);
     progressEl.classList.remove(collapseClass);
+    progressEl.classList.add("spin");
 }
 
 function completed() {
@@ -84,9 +86,12 @@ function completed() {
     nameEl.classList.remove(collapseClass);
     nameEl.classList.remove(placeholderClass)
     progressEl.classList.add(collapseClass);
+    progressEl.classList.remove("spin");
 
-    document.getElementById(nameField).value = '';
-    document.getElementById(monthField).value = '';
+    if (!isLocal()) {
+        document.getElementById(nameField).value = '';
+        document.getElementById(monthField).value = '';
+    }
 }
 
 function setUnicornName(name, month) {
@@ -95,8 +100,6 @@ function setUnicornName(name, month) {
 
     var output = document.getElementById(outputField);
     output.innerText = unicornName;
-
-    completed();
 }
 
 function checkValue(value) {
@@ -104,4 +107,17 @@ function checkValue(value) {
         return false;
     }
     return true;
+}
+
+function addTestValues() {
+    document.getElementById(nameField).value = "A";
+    document.getElementById(monthField).value = "jan";
+}
+
+function isLocal() {
+    return window.location.href.toLocaleLowerCase().startsWith("file:///c:/");
+}
+
+if (isLocal()) {
+    document.addEventListener("DOMContentLoaded", addTestValues, false);
 }
