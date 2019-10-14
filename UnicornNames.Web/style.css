@@ -126,9 +126,9 @@
     background-color: #FF6900;
     color: white;
     display: inline-block;
-    font-weight: bold;
+    /* font-weight: bold; */
     height: 36px;
-    width: 125px;
+    width: 130px;
     vertical-align: middle;
     cursor: pointer;
     border-radius: 4px;
