@@ -65,10 +65,7 @@ function getUnicornName() {
     inProgress();
     setUnicornName(name, month);
 
-    setTimeout(() => {
-        completed();
-    }, delay);
-
+    setTimeout(completed, delay);
 }
 
 function inProgress() {
