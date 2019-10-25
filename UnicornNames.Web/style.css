@@ -4,6 +4,18 @@
     border-style: solid;
 }
 
+.col-exsm {
+    display: inline-block;
+    width: 60px;
+    vertical-align: top;
+}
+
+.col-sm {
+    display: inline-block;
+    width: 120px;
+    vertical-align: top;
+}
+
 .col-med {
     display: inline-block;
     width: 230px;

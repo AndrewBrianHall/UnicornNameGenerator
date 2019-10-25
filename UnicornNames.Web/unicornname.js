@@ -74,6 +74,7 @@ function inProgress() {
     nameEl.classList.add(collapseClass);
     progressEl.classList.remove(collapseClass);
     progressEl.classList.add("spin");
+    hideInputTable();
 }
 
 function completed() {
@@ -84,6 +85,8 @@ function completed() {
     nameEl.classList.remove(placeholderClass)
     progressEl.classList.add(collapseClass);
     progressEl.classList.remove("spin");
+
+    showInputTable();
 
     if (!isLocal()) {
         document.getElementById(nameField).value = '';
@@ -99,6 +102,27 @@ function setUnicornName(name, month) {
     output.innerText = unicornName;
 }
 
+function hideInputTable() {
+    var table = document.getElementById('tblDisplayInput');
+
+    table.classList.add('collapse');
+}
+
+function showInputTable() {
+    var name = document.getElementById(nameField);
+    var t = document.getElementById(monthField);
+
+    var table = document.getElementById('tblDisplayInput');
+    var nameLable = document.getElementById('lblOriginalName');
+    var bdayLabel = document.getElementById('lblOriginalBirthday');
+
+    table.classList.remove('collapse');
+
+    nameLable.innerText = name.value;
+    bdayLabel.innerText = t.options[t.selectedIndex].text;
+
+}
+
 function checkValue(value) {
     if (value == null || value === "") {
         return false;
@@ -107,12 +131,17 @@ function checkValue(value) {
 }
 
 function addTestValues() {
-    document.getElementById(nameField).value = "A";
-    document.getElementById(monthField).value = "jan";
+    document.getElementById(nameField).value = "Andrew";
+    document.getElementById(monthField).value = "nov";
 }
 
 function isLocal() {
-    return window.location.href.toLocaleLowerCase().startsWith("file:///c:/");
+    try {
+        // IE doesn't support .startsWith
+        return window.location.href.toLocaleLowerCase().indexOf("file:///c:/") === 0;
+    } catch (error) {
+        return false;
+    }
 }
 
 if (isLocal()) {
