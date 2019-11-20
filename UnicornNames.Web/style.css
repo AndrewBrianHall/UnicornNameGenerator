@@ -12,7 +12,7 @@
 
 .col-sm {
     display: inline-block;
-    width: 120px;
+    width: 150px;
     vertical-align: top;
 }
 
@@ -62,6 +62,7 @@
 .lbloutput {
     font-weight: bold;
     margin-top: 3px;
+    padding-left: 5px;
 }
 
 .text-placeholder {
@@ -156,6 +157,7 @@ body {
 select {
     padding: 1px;
     font-size: 100%;
+    color: black;
 }
 
 input {

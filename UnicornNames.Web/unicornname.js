@@ -42,6 +42,8 @@ var birthdayTable = {
     "dec": "Frost-Fire"
 }
 
+var Months = Array('jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec');
+
 var nameField = "txtName";
 var monthField = "selMonth";
 var outputField = "lblUnicornName";
@@ -52,7 +54,7 @@ var delay = 400;
 
 function getUnicornName() {
     var name = document.getElementById(nameField).value;
-    var month = document.getElementById(monthField).value;
+    var month = getBirthMonth();
 
     if (!checkValue(name)) {
         alert("Enter your name");
@@ -66,6 +68,22 @@ function getUnicornName() {
     setUnicornName(name, month);
 
     setTimeout(completed, delay);
+}
+
+function getBirthMonth() {
+    var month = document.getElementById(monthField).value;
+    if (month === '') {
+        var monthNum = 0;
+        var name = document.getElementById(nameField).value;
+        try {
+            monthNum = name.charCodeAt(1) % 12;
+        } catch (error) {
+            monthNum = name.length % 12;
+        }
+        return Months[monthNum];
+    }
+
+    return month;
 }
 
 function inProgress() {
@@ -110,21 +128,26 @@ function hideInputTable() {
 
 function showInputTable() {
     var name = document.getElementById(nameField);
-    var t = document.getElementById(monthField);
+    var monthDropdown = document.getElementById(monthField);
+    var monthStr = monthDropdown.options[monthDropdown.selectedIndex].text;
 
     var table = document.getElementById('tblDisplayInput');
     var nameLable = document.getElementById('lblOriginalName');
     var bdayLabel = document.getElementById('lblOriginalBirthday');
 
+    if (monthDropdown.value === '') {
+        monthStr = '';
+    }
+
     table.classList.remove('collapse');
 
     nameLable.innerText = name.value;
-    bdayLabel.innerText = t.options[t.selectedIndex].text;
+    bdayLabel.innerText = monthStr;
 
 }
 
 function checkValue(value) {
-    if (value == null || value === "") {
+    if (value === null || value === "") {
         return false;
     }
     return true;
@@ -138,7 +161,10 @@ function addTestValues() {
 function isLocal() {
     try {
         // IE doesn't support .startsWith
-        return window.location.href.toLocaleLowerCase().indexOf("file:///c:/") === 0;
+        var fromFile = window.location.href.toLocaleLowerCase().indexOf("file:///c:/") === 0;
+        var queryOverride = window.location.search.toLocaleLowerCase().indexOf("nodefaults") === -1;
+        console.log(window.location.search);
+        return fromFile && queryOverride;
     } catch (error) {
         return false;
     }
