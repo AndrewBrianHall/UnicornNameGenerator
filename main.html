@@ -1,0 +1,63 @@
+<html>
+
+<head>
+    <style>
+        .tile {
+            display: inline-block;
+            width: 210px;
+            border: solid black 1px;
+            text-align: center;
+            height: 325px;
+            margin-right: 15px;
+            vertical-align: middle;
+            position: relative;
+        }
+        
+        .tile:hover {
+            background-color: rgb(211, 245, 247);
+        }
+        
+        a {
+            vertical-align: middle;
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
+            background-color: white;
+        }
+        
+        .content {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
+            display: block;
+            font-size: 1.2em;
+            margin-left: 3px;
+            margin-right: 3px;
+        }
+        
+        .tile-content {
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        body {
+            background-color: #dddddd;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tile-content">
+        <a class="tile" href="/unicornname">
+            <div class="content">Unicorn Name Generator</div>
+        </a>
+        <a class="tile" href="/suppliers">
+            <div class="content">Supplier Management System</div>
+        </a>
+    </div>
+</body>
+
+</html>
