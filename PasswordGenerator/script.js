@@ -41,6 +41,12 @@ function generateNewPassword() {
     document.activeElement.blur();
 }
 
+function keyDown(event) {
+    if (event.keyCode === 13) {
+        document.activeElement.blur();
+    }
+}
+
 function copyToClipboard() {
     const el = document.createElement('textarea');
     el.value = document.getElementById('generated-password').innerText;
@@ -53,6 +59,6 @@ function copyToClipboard() {
     document.body.removeChild(el);
 };
 
-window.addEventListener('DOMContentLoaded', (event) => {
+window.addEventListener('DOMContentLoaded', function(event) {
     generateNewPassword();
 });
